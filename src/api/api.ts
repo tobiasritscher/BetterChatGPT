@@ -20,7 +20,7 @@ export const getChatCompletion = async (
 
     const model = config.model === 'gpt-3.5-turbo' ? 'gpt-35-turbo' : config.model === 'gpt-3.5-turbo-16k' ? 'gpt-35-turbo-16k' : config.model;
 
-    const apiVersion = '2023-05-15';
+    const apiVersion = '2023-12-01-preview';
 
     const path = `openai/deployments/${model}/chat/completions?api-version=${apiVersion}`;
 
