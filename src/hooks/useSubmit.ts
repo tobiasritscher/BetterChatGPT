@@ -13,6 +13,7 @@ const useSubmit = () => {
   const error = useStore((state) => state.error);
   const setError = useStore((state) => state.setError);
   const apiEndpoint = useStore((state) => state.apiEndpoint);
+  const apiVersion = useStore((state) => state.apiVersion);
   const apiKey = useStore((state) => state.apiKey);
   const setGenerating = useStore((state) => state.setGenerating);
   const generating = useStore((state) => state.generating);
@@ -34,7 +35,8 @@ const useSubmit = () => {
         data = await getChatCompletion(
           useStore.getState().apiEndpoint,
           message,
-          _defaultChatConfig
+          _defaultChatConfig,
+          useStore.getState().apiVersion
         );
       } else if (apiKey) {
         // own apikey
@@ -42,7 +44,8 @@ const useSubmit = () => {
           useStore.getState().apiEndpoint,
           message,
           _defaultChatConfig,
-          apiKey
+          apiKey,
+          useStore.getState().apiVersion
         );
       }
     } catch (error: unknown) {
